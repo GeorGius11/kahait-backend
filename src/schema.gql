@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Answer {
+  id: Int!
+  text: String!
+  isCorrect: Boolean!
+}
+
+type Question {
+  id: Int!
+  title: String!
+  answers: [Answer!]!
+}
+
+type Quiz {
+  id: Int!
+  title: String!
+  description: String
+  createdAt: DateTime!
+  questions: [Question!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  quiz(id: Int!): Quiz!
+}
