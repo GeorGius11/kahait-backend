@@ -1,10 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Quiz } from './models/quiz.model';
+import { CreateQuizInput } from './dto/create-quiz.input';
 
 @Injectable()
 export class QuizService {
   constructor(private readonly prisma: PrismaService) {}
+
+  createQuiz(createQuizInput: CreateQuizInput) {
+    return this.prisma.quiz.create({ data: createQuizInput });
+  }
 
   findOneById(id: number) {
     return this.prisma.quiz.findUnique({

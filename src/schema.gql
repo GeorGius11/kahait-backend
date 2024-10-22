@@ -30,3 +30,12 @@ scalar DateTime
 type Query {
   quiz(id: Int!): Quiz!
 }
+
+type Mutation {
+  createQuiz(createQuizInput: CreateQuizInput!): Quiz!
+}
+
+input CreateQuizInput {
+  title: String!
+  description: String
+}
