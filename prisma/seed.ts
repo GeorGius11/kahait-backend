@@ -1,11 +1,8 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // Create sample quizzes
   const quiz1 = await prisma.quiz.create({
     data: {
       title: 'General Knowledge Quiz',
