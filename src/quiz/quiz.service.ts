@@ -24,4 +24,16 @@ export class QuizService {
       },
     });
   }
+
+  findAll() {
+    return this.prisma.quiz.findMany({
+      include: {
+        questions: {
+          include: {
+            answers: true,
+          },
+        },
+      },
+    });
+  }
 }
