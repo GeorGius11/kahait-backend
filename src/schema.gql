@@ -33,9 +33,15 @@ type Query {
 
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
+  createQuestion(createQuestionInput: CreateQuestionInput!): Question!
 }
 
 input CreateQuizInput {
   title: String!
   description: String
+}
+
+input CreateQuestionInput {
+  title: String!
+  quizId: Int!
 }
