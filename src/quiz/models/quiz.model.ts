@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Question } from './question.model';
+import { Question } from '../../questions/models/question.model';
 
 @ObjectType()
 export class Quiz {
