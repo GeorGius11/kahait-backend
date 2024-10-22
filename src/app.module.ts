@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { QuizzesModule } from './quizzes/quizzes.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { QuestionsModule } from './questions/questions.module';
+import { AnswersModule } from './answers/answers.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { QuestionsModule } from './questions/questions.module';
     PrismaModule,
     QuizzesModule,
     QuestionsModule,
+    AnswersModule,
   ],
 })
 export class AppModule {}
