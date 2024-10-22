@@ -35,6 +35,7 @@ type Query {
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
   createQuestion(createQuestionInput: CreateQuestionInput!): Question!
+  createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
 }
 
 input CreateQuizInput {
@@ -45,4 +46,10 @@ input CreateQuizInput {
 input CreateQuestionInput {
   title: String!
   quizId: Int!
+}
+
+input CreateAnswerInput {
+  text: String!
+  isCorrect: Boolean!
+  questionId: Int!
 }
