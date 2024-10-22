@@ -3,7 +3,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
 
 @Injectable()
-export class QuizService {
+export class QuizzesService {
   constructor(private readonly prisma: PrismaService) {}
 
   createQuiz(createQuizInput: CreateQuizInput) {

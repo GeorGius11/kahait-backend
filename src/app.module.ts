@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { PrismaModule } from './prisma/prisma.module';
-import { QuizModule } from './quiz/quiz.module';
+import { QuizzesModule } from './quizzes/quizzes.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { QuestionsModule } from './questions/questions.module';
 
@@ -16,7 +16,7 @@ import { QuestionsModule } from './questions/questions.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
     }),
     PrismaModule,
-    QuizModule,
+    QuizzesModule,
     QuestionsModule,
   ],
 })

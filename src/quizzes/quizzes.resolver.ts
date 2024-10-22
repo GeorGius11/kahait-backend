@@ -1,11 +1,11 @@
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Quiz } from './models/quiz.model';
-import { QuizService } from './quiz.service';
+import { QuizzesService } from './quizzes.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
+import { Quiz } from './models/quiz.model';
 
 @Resolver(() => Quiz)
-export class QuizResolver {
-  constructor(private readonly quizService: QuizService) {}
+export class QuizzesResolver {
+  constructor(private readonly quizService: QuizzesService) {}
 
   @Mutation(() => Quiz)
   async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
