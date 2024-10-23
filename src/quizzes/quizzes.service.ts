@@ -27,15 +27,7 @@ export class QuizzesService {
   }
 
   findAll() {
-    return this.prisma.quiz.findMany({
-      include: {
-        questions: {
-          include: {
-            answers: true,
-          },
-        },
-      },
-    });
+    return this.prisma.quiz.findMany();
   }
 
   updateQuiz(updateQuizData: UpdateQuizInput) {
