@@ -34,16 +34,24 @@ type Query {
 
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
+  updateQuiz(updateQuizInput: UpdateQuizInput!): Quiz!
   deleteQuiz(id: Int!): Quiz!
   createQuestion(createQuestionInput: CreateQuestionInput!): Question!
   deleteQuestion(id: Int!): Question!
   createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
+  updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
   deleteAnswer(id: Int!): Answer!
 }
 
 input CreateQuizInput {
   title: String!
   description: String
+}
+
+input UpdateQuizInput {
+  title: String
+  description: String
+  id: Int!
 }
 
 input CreateQuestionInput {
@@ -55,4 +63,11 @@ input CreateAnswerInput {
   text: String!
   isCorrect: Boolean!
   questionId: Int!
+}
+
+input UpdateAnswerInput {
+  text: String
+  isCorrect: Boolean
+  questionId: Int
+  id: Float!
 }

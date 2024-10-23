@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
+import { UpdateQuizInput } from './dto/update-quiz.input';
 
 @Injectable()
 export class QuizzesService {
@@ -35,6 +36,11 @@ export class QuizzesService {
         },
       },
     });
+  }
+
+  updateQuiz(updateQuizData: UpdateQuizInput) {
+    const { id, ...data } = updateQuizData;
+    return this.prisma.quiz.update({ where: { id }, data: data });
   }
 
   deleteQuiz(id: number) {
