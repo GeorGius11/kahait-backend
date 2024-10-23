@@ -9,4 +9,8 @@ export class QuestionsService {
   createQuestion(createQuestionInput: CreateQuestionInput) {
     return this.prisma.question.create({ data: createQuestionInput });
   }
+
+  deleteQuestion(id: number) {
+    return this.prisma.question.delete({ where: { id } });
+  }
 }

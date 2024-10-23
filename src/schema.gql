@@ -34,8 +34,11 @@ type Query {
 
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
+  deleteQuiz(id: Int!): Quiz!
   createQuestion(createQuestionInput: CreateQuestionInput!): Question!
+  deleteQuestion(id: Int!): Question!
   createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
+  deleteAnswer(id: Int!): Answer!
 }
 
 input CreateQuizInput {

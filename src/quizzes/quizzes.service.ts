@@ -36,4 +36,8 @@ export class QuizzesService {
       },
     });
   }
+
+  deleteQuiz(id: number) {
+    return this.prisma.quiz.delete({ where: { id } });
+  }
 }
