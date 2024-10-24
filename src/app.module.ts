@@ -7,6 +7,7 @@ import { QuizzesModule } from './quizzes/quizzes.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { QuestionsModule } from './questions/questions.module';
 import { AnswersModule } from './answers/answers.module';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AnswersModule } from './answers/answers.module';
     QuizzesModule,
     QuestionsModule,
     AnswersModule,
+    TagsModule,
   ],
 })
 export class AppModule {}
