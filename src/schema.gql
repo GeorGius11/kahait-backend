@@ -14,12 +14,19 @@ type Question {
   answers: [Answer!]!
 }
 
+type Tag {
+  id: Int!
+  title: String!
+  quizzes: [Quiz]
+}
+
 type Quiz {
   id: Int!
   title: String!
   description: String
   createdAt: DateTime!
   questions: [Question!]!
+  tags: [Tag!]!
 }
 
 """
@@ -37,10 +44,12 @@ type Mutation {
   updateQuiz(updateQuizInput: UpdateQuizInput!): Quiz!
   deleteQuiz(id: Int!): Quiz!
   createQuestion(createQuestionInput: CreateQuestionInput!): Question!
+  updateQuestion(updateQuestionInput: UpdateQuestionInput!): Question!
   deleteQuestion(id: Int!): Question!
   createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
   updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
   deleteAnswer(id: Int!): Answer!
+  createTag(createTagInput: CreateTagInput!): Tag!
 }
 
 input CreateQuizInput {
@@ -59,6 +68,12 @@ input CreateQuestionInput {
   quizId: Int!
 }
 
+input UpdateQuestionInput {
+  title: String
+  quizId: Int
+  id: Int!
+}
+
 input CreateAnswerInput {
   text: String!
   isCorrect: Boolean!
@@ -70,4 +85,8 @@ input UpdateAnswerInput {
   isCorrect: Boolean
   questionId: Int
   id: Float!
+}
+
+input CreateTagInput {
+  title: String!
 }
