@@ -9,6 +9,6 @@ export class Tag {
   @Field()
   title: string;
 
-  @Field((type) => [Quiz], { nullable: 'itemsAndList' })
+  @Field((type) => [Quiz])
   quizzes: Quiz[];
 }

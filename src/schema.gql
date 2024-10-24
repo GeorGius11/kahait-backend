@@ -17,7 +17,7 @@ type Question {
 type Tag {
   id: Int!
   title: String!
-  quizzes: [Quiz]
+  quizzes: [Quiz!]!
 }
 
 type Quiz {

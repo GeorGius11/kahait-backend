@@ -5,7 +5,7 @@ import { QuestionsService } from './questions.service';
 import { UpdateQuestionInput } from './dto/update-question.input';
 
 @Resolver(() => Question)
-export class QuestionResolver {
+export class QuestionsResolver {
   constructor(private readonly questionsService: QuestionsService) {}
 
   @Mutation(() => Question)
