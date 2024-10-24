@@ -13,6 +13,7 @@ model Quiz {
   description String?
   createdAt   DateTime   @default(now())
   questions   Question[]
+  tags        Tag[]
 }
 
 model Question {
@@ -27,6 +28,12 @@ model Answer {
   id         Int      @id @default(autoincrement())
   text       String
   isCorrect  Boolean
-  Question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId Int
+}
+
+model Tag {
+  id      Int    @id @default(autoincrement())
+  title   String
+  quizzes Quiz[]
 }
