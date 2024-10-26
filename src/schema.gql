@@ -51,6 +51,7 @@ type Mutation {
   deleteAnswer(id: Int!): Answer!
   createTag(createTagInput: CreateTagInput!): Tag!
   updateTag(updateTagInput: UpdateTagInput!): Tag!
+  deleteTag(id: Int!): Tag!
 }
 
 input CreateQuizInput {

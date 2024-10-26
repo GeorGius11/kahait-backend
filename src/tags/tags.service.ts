@@ -15,4 +15,8 @@ export class TagsService {
     const { id, ...data } = updateTagData;
     return this.prisma.tag.update({ where: { id }, data: data });
   }
+
+  deleteTag(id: number) {
+    return this.prisma.tag.delete({ where: { id } });
+  }
 }
