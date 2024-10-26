@@ -1,4 +1,4 @@
-import { Args, Int, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Tag } from './model/tag.model';
 import { TagsService } from './tags.service';
 import { CreateTagInput } from './dto/create-tag.input';
@@ -11,6 +11,11 @@ export class TagsResolver {
   @Mutation(() => Tag)
   async createTag(@Args('createTagInput') createTagData: CreateTagInput) {
     return this.tagsService.createTag(createTagData);
+  }
+
+  @Query(() => Tag, { name: 'tags' })
+  async getAllTags() {
+    return this.tagsService.getAllTags();
   }
 
   @Mutation(() => Tag)

@@ -37,6 +37,7 @@ scalar DateTime
 type Query {
   quiz(id: Int!): Quiz!
   quizzes: [Quiz!]!
+  tags: Tag!
 }
 
 type Mutation {

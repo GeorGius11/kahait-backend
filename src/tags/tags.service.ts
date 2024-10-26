@@ -11,6 +11,10 @@ export class TagsService {
     return this.prisma.tag.create({ data: createTagData });
   }
 
+  getAllTags() {
+    return this.prisma.tag.findMany();
+  }
+
   updateTag(updateTagData: UpdateTagInput) {
     const { id, ...data } = updateTagData;
     return this.prisma.tag.update({ where: { id }, data: data });
