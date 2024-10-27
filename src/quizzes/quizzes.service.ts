@@ -3,33 +3,34 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
 import { UpdateQuizInput } from './dto/update-quiz.input';
 import { AssignTagsToQuizInput } from './dto/assign-tags-to-quiz.input';
+import { GraphQLResolveInfo } from 'graphql';
+import { PrismaSelectService } from 'src/prisma/prisma-select.service';
 
 @Injectable()
 export class QuizzesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly prismaSelectService: PrismaSelectService,
+  ) {}
 
   createQuiz(createQuizInput: CreateQuizInput) {
     return this.prisma.quiz.create({ data: createQuizInput });
   }
 
-  findOneById(id: number) {
+  findOneById(id: number, info?: GraphQLResolveInfo) {
+    const select = this.prismaSelectService.getValue(info);
+
     return this.prisma.quiz.findUnique({
       where: {
         id,
       },
-      include: {
-        questions: {
-          include: {
-            answers: true,
-          },
-        },
-        tags: true,
-      },
+      ...select,
     });
   }
 
-  findAll() {
-    return this.prisma.quiz.findMany();
+  findAll(info?: GraphQLResolveInfo) {
+    const select = this.prismaSelectService.getValue(info);
+    return this.prisma.quiz.findMany({ ...select });
   }
 
   updateQuiz(updateQuizData: UpdateQuizInput) {

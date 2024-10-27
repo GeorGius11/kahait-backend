@@ -1,8 +1,9 @@
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Info, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Tag } from './model/tag.model';
 import { TagsService } from './tags.service';
 import { CreateTagInput } from './dto/create-tag.input';
 import { UpdateTagInput } from './dto/update-tag.input';
+import { GraphQLResolveInfo } from 'graphql';
 
 @Resolver()
 export class TagsResolver {
@@ -14,8 +15,8 @@ export class TagsResolver {
   }
 
   @Query(() => [Tag], { name: 'tags' })
-  async getAllTags() {
-    return this.tagsService.getAllTags();
+  async getAllTags(@Info() info?: GraphQLResolveInfo) {
+    return this.tagsService.getAllTags(info);
   }
 
   @Mutation(() => Tag)

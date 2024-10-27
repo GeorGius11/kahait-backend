@@ -2,17 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTagInput } from './dto/create-tag.input';
 import { UpdateTagInput } from './dto/update-tag.input';
+import { GraphQLResolveInfo } from 'graphql';
+import { PrismaSelectService } from 'src/prisma/prisma-select.service';
 
 @Injectable()
 export class TagsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly prismaSelect: PrismaSelectService,
+  ) {}
 
   createTag(createTagData: CreateTagInput) {
     return this.prisma.tag.create({ data: createTagData });
   }
 
-  getAllTags() {
-    return this.prisma.tag.findMany();
+  getAllTags(info?: GraphQLResolveInfo) {
+    const select = this.prismaSelect.getValue(info);
+    return this.prisma.tag.findMany(...select);
   }
 
   updateTag(updateTagData: UpdateTagInput) {
