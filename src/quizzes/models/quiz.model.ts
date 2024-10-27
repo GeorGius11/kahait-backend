@@ -10,7 +10,7 @@ export class Quiz {
   @Field()
   title: string;
 
-  @Field({ nullable: true })
+  @Field({ nullable: true, defaultValue: '' })
   description?: string;
 
   @Field()
@@ -19,6 +19,6 @@ export class Quiz {
   @Field((type) => [Question])
   questions: Question[];
 
-  @Field((type) => [Tag])
+  @Field((type) => [Tag], { defaultValue: [] })
   tags: Tag[];
 }

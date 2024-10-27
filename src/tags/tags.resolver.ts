@@ -13,7 +13,7 @@ export class TagsResolver {
     return this.tagsService.createTag(createTagData);
   }
 
-  @Query(() => Tag, { name: 'tags' })
+  @Query(() => [Tag], { name: 'tags' })
   async getAllTags() {
     return this.tagsService.getAllTags();
   }

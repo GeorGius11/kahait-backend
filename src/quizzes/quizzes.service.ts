@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
 import { UpdateQuizInput } from './dto/update-quiz.input';
+import { AssignTagsToQuizInput } from './dto/assign-tags-to-quiz.input';
 
 @Injectable()
 export class QuizzesService {
@@ -22,6 +23,7 @@ export class QuizzesService {
             answers: true,
           },
         },
+        tags: true,
       },
     });
   }
@@ -37,5 +39,18 @@ export class QuizzesService {
 
   deleteQuiz(id: number) {
     return this.prisma.quiz.delete({ where: { id } });
+  }
+
+  assignTags(assignTagsInput: AssignTagsToQuizInput) {
+    const { quizId, tagIds } = assignTagsInput;
+
+    return this.prisma.quiz.update({
+      where: { id: quizId },
+      data: {
+        tags: {
+          connect: tagIds.map((id) => ({ id })),
+        },
+      },
+    });
   }
 }

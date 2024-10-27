@@ -17,7 +17,7 @@ type Question {
 type Tag {
   id: Int!
   title: String!
-  quizzes: [Quiz!]!
+  quizzes: [Quiz!]
 }
 
 type Quiz {
@@ -37,13 +37,14 @@ scalar DateTime
 type Query {
   quiz(id: Int!): Quiz!
   quizzes: [Quiz!]!
-  tags: Tag!
+  tags: [Tag!]!
 }
 
 type Mutation {
   createQuiz(createQuizInput: CreateQuizInput!): Quiz!
   updateQuiz(updateQuizInput: UpdateQuizInput!): Quiz!
   deleteQuiz(id: Int!): Quiz!
+  assignTagsToQuiz(assignTagsToQuizData: AssignTagsToQuizInput!): Quiz!
   createQuestion(createQuestionInput: CreateQuestionInput!): Question!
   updateQuestion(updateQuestionInput: UpdateQuestionInput!): Question!
   deleteQuestion(id: Int!): Question!
@@ -64,6 +65,11 @@ input UpdateQuizInput {
   title: String
   description: String
   id: Int!
+}
+
+input AssignTagsToQuizInput {
+  quizId: Int!
+  tagIds: [Int!]!
 }
 
 input CreateQuestionInput {

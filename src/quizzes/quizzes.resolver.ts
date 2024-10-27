@@ -3,6 +3,7 @@ import { QuizzesService } from './quizzes.service';
 import { CreateQuizInput } from './dto/create-quiz.input';
 import { Quiz } from './models/quiz.model';
 import { UpdateQuizInput } from './dto/update-quiz.input';
+import { AssignTagsToQuizInput } from './dto/assign-tags-to-quiz.input';
 
 @Resolver(() => Quiz)
 export class QuizzesResolver {
@@ -31,5 +32,12 @@ export class QuizzesResolver {
   @Mutation(() => Quiz)
   async deleteQuiz(@Args('id', { type: () => Int }) id: number) {
     return this.quizzesService.deleteQuiz(id);
+  }
+
+  @Mutation(() => Quiz)
+  async assignTagsToQuiz(
+    @Args('assignTagsToQuizData') assignTagsToQuizData: AssignTagsToQuizInput,
+  ) {
+    return this.quizzesService.assignTags(assignTagsToQuizData);
   }
 }
