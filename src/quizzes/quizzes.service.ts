@@ -13,7 +13,7 @@ export class QuizzesService {
     private readonly prismaSelectService: PrismaSelectService,
   ) {}
 
-  createQuiz(createQuizInput: CreateQuizInput) {
+  create(createQuizInput: CreateQuizInput) {
     return this.prisma.quiz.create({ data: createQuizInput });
   }
 
@@ -33,12 +33,12 @@ export class QuizzesService {
     return this.prisma.quiz.findMany({ ...select });
   }
 
-  updateQuiz(updateQuizData: UpdateQuizInput) {
+  update(updateQuizData: UpdateQuizInput) {
     const { id, ...data } = updateQuizData;
     return this.prisma.quiz.update({ where: { id }, data: data });
   }
 
-  deleteQuiz(id: number) {
+  delete(id: number) {
     return this.prisma.quiz.delete({ where: { id } });
   }
 

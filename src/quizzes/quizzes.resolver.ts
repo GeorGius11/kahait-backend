@@ -12,7 +12,7 @@ export class QuizzesResolver {
 
   @Mutation(() => Quiz)
   async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
-    return this.quizzesService.createQuiz(createQuizInput);
+    return this.quizzesService.create(createQuizInput);
   }
 
   @Query(() => Quiz, { name: 'quiz' })
@@ -30,12 +30,12 @@ export class QuizzesResolver {
 
   @Mutation(() => Quiz)
   async updateQuiz(@Args('updateQuizInput') updateQuizData: UpdateQuizInput) {
-    return this.quizzesService.updateQuiz(updateQuizData);
+    return this.quizzesService.update(updateQuizData);
   }
 
   @Mutation(() => Quiz)
   async deleteQuiz(@Args('id', { type: () => Int }) id: number) {
-    return this.quizzesService.deleteQuiz(id);
+    return this.quizzesService.delete(id);
   }
 
   @Mutation(() => Quiz)
