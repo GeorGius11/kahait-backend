@@ -38,6 +38,7 @@ type Query {
   quiz(id: Int!): Quiz!
   quizzes: [Quiz!]!
   answers: [Answer!]!
+  answer(id: Float!): Answer!
   tags: [Tag!]!
 }
 

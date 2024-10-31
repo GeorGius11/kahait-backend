@@ -21,6 +21,11 @@ export class AnswersResolver {
     return this.answersService.findAll(info);
   }
 
+  @Query(() => Answer, { name: 'answer' })
+  async getAnswer(@Args('id') id: number, @Info() info?: GraphQLResolveInfo) {
+    return this.answersService.findOne(id, info);
+  }
+
   @Mutation(() => Answer)
   async updateAnswer(
     @Args('updateAnswerInput') updateAnswerData: UpdateAnswerInput,

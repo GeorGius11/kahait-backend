@@ -24,6 +24,17 @@ export class AnswersService {
     });
   }
 
+  findOne(id: number, info?: GraphQLResolveInfo) {
+    const select = this.prismaSelectService.getValue(info);
+
+    return this.prisma.answer.findUnique({
+      where: {
+        id,
+      },
+      ...select,
+    });
+  }
+
   update(updateAnswerData: UpdateAnswerInput) {
     const { id, ...data } = updateAnswerData;
     return this.prisma.answer.update({ where: { id }, data: data });
